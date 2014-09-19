@@ -50,6 +50,11 @@ public class Greeter {
     public String getGreeting() {
 	return greeting;
     }
+
+
+    public String greetPerson(String s){
+	return greeting + " " + s;
+    }
     
     public void setGreeting(String s){
 	greeting  = s;
