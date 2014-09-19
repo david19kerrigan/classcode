@@ -29,7 +29,7 @@ public class Greeter {
        types. Java figures out which one to run by matching parameter types
     */
     public Greeter() {
-	greeting = "Hello world!"
+	greeting = "Hello world!";
     }
     
 
@@ -38,6 +38,15 @@ public class Greeter {
     public void setGreeting(String s) {
 	greeting = s;
     }
+
+    public String greetPerson(String name) {
+	return greeting+" "+name;
+    }
+
+    public String loudGreeting() {
+	return greeting.toUpperCase();
+    }
+
 
     // String is the "return type" that is, the type of the data that we
     // will send back using the return statement.
