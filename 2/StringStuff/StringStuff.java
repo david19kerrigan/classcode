@@ -1,4 +1,3 @@
-
 public class StringStuff {
     public void test1(){
 	String s1 = "hello";
@@ -12,7 +11,23 @@ public class StringStuff {
 	System.out.println("s2==s3: "+(s2 == s3));
 	System.out.println("s2==s4: "+(s2 == s4));
 	System.out.println("s3==s4: "+(s3 == s4));
+
+	System.out.println();
+	System.out.println(s1.equals(s2));
+	System.out.println(s1.equals(s3));
+	System.out.println(s1.equals(s4));
+	System.out.println(s1.equals("Hello"));
+
+	System.out.println();
+	System.out.println("aaa".compareTo("aaa"));
+	System.out.println("abc".compareTo("aaa"));
+	System.out.println("aaa".compareTo("abc"));
+	System.out.println("aaa".compareTo("AAA"));
+	System.out.println("AAAAA".compareTo("AAADA"));
+	System.out.println("aaaaaaaaaaaaaA".compareTo("aaaaa"));
+
+	System.out.println("Hello world".indexOf(" "));
+	System.out.println("Hello world".substring(0,5));
 	
     }
-
 }
