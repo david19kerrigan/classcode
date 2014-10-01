@@ -10,7 +10,7 @@ public class Shapes {
 	    col = c;
 	    while (col>0){
 		s = s + "*";
-		col`1`=col-1;
+		col=col-1;
 	    }
 	    s=s+"\n";
 	    row=row+1;
