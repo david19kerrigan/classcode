@@ -4,5 +4,9 @@ public class Driver {
 	Shapes s =  new Shapes();
 	System.out.println(s.box(5,4));
 	System.out.println(s.box(4,5));
+	System.out.println();
+	System.out.println(s.tri1(5));
+	System.out.println();
+	System.out.println(s.tri2(5));
     }
 }
