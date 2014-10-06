@@ -1,5 +1,14 @@
 
 public class Shapes {
+
+    public String line(String c, int n){
+	String s = "";
+	for (int i = 0; i < n; i++) {
+	    s = s + c;
+	}
+	return s;
+    }
+    
     public String box(int r, int c) {
 	String s = "";
 
@@ -56,4 +65,27 @@ public class Shapes {
 	return s;
     }
 
+    public String tri3(int h){
+	String s = "";
+	for (int r=0;r<h;r++){
+	    s=s+line(".",h-r-1)+
+		line("*",2*r+1)+
+		"\n";
+	}
+	return s;
+    }
+
+    public String diamond(int h){
+	h = h - (h/2);
+	String s = tri3(h);
+	
+	//	for (int r=0;r<h;r++){
+	for (int r=h-2;r>=0;r--){
+	    s=s+line(".",h-r-1)+
+		line("*",2*r+1)+
+		"\n";
+	}
+	return s;
+    }
+    
 }
