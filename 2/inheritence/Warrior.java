@@ -5,5 +5,11 @@ public class Warrior extends Basechar {
     public int getHealth() {
 	return healthboost + super.getHealth();
     }
+    public void attack(Basechar other){
+	//System.out.println(this.getName()+" is SUPERattacking "+other.getName());
+	// automatically calls toString
+	System.out.println(this+" is SUPERattacking "+other);
+
+    }
     
 }
