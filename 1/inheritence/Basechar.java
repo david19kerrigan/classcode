@@ -2,6 +2,14 @@
 public class Basechar {
     private int health=20;
     private String name="default name";
+    /*
+    public Basechar() {
+	setName("Default");
+    }
+    */
+    public Basechar(String n){
+	setName(n);
+    }
 
     public String toString(){
 	return this.getName();
