@@ -53,5 +53,12 @@ class Ademo {
 	 }
 	 System.out.println();
 
+	 String[] messages = {
+	     "feast your eyes",
+	     "gaze upon",
+	     "look at me I am ...."
+	 }
+	 
+	 
     }
 }
