@@ -62,6 +62,46 @@ public class Mode {
 				System.out.println("modeval = "+a[modeIndex]);
 				return count;
 		}
+
+		public int maxVal() {
+				int maxSoFar = a[0];
+				for (int i=0;i<a.length;i++) {
+						if (a[i] > maxSoFar)
+								maxSoFar = a[i];
+				}
+				return maxSoFar;
+		}
+
+		public int maxIndex(int[] a) {
+				int maxI = 0;
+				for (int i=0;i<a.length;i++) {
+						if (a[i] > a[maxI])
+								maxI = i;
+				}
+				return maxI;
+		}
+
+		public int fastmode() {
+
+				/* set up array of buckets for the tallies */
+				int max = maxVal();
+				int[] tallies = new int[max+1];
+				/* 
+					 Java initializes this to 0 so we don't need this loop
+				for (int i = 0; i < tallies.length; i++) {
+						tallies[i]=0;					
+				}
+				*/
+
+				for (int i=0;i<a.length;i++){
+						tallies[ a[i] ] += 1;
+				}
+
+				int m = maxIndex(tallies);
+				System.out.println("fastmodeval = "+m);
+				return tallies[m];
+				
+		}
 		
 		/*------------  main -------------*/
 		
@@ -69,16 +109,25 @@ public class Mode {
 				int n=20,
 						maxval=20;
 
-				if (args.length > 0){
-						n = Integer.parseInt(args[0]);
+				if (args.length == 0) {
+						System.out.println("You must specify f or s as first argument");
+						System.exit(0);
 				}
+				String choice = args[0];
 				if (args.length > 1){
-						maxval = Integer.parseInt(args[1]);
+						n = Integer.parseInt(args[1]);
+				}
+				if (args.length > 2){
+						maxval = Integer.parseInt(args[2]);
 				}
 
 				Mode m = new Mode(n,maxval);
-				// System.out.println(m);
-				System.out.println("modecount = "+m.mode());
+				if (choice.equals("s")){
+						System.out.println("slow modecount = "+m.mode());
+				} else {
+						System.out.println("fast modecount = "+m.fastmode());
+				}
+				
 		}
 
 }
