@@ -1,36 +1,56 @@
-import java.util.Random;
+import java.util.*;
+import java.io.*;
+
 /**
  * Creates a word search puzzle
  *
  */
 public class WordSearch{
 
-    private char[][] board;
-    Random r = new Random();
+    private char[][] board,key;
+		private ArrayList<String> words;
+		private ArrayList<String> wordsInPuzzle;
+    private Random rnd;
     
     public WordSearch(int r, int c){
-	board = new char[r][c];
-	for (int i = 0; i < board.length; i++) {
-	    for (int j = 0; j < board[i].length; j++) {
-		board[i][j]='.';
-	    }
+				rnd = new Random();
+				words = new ArrayList<String>();
+
+				Scanner sc = null;
+
+				try {
+						sc = new Scanner(new File("words.txt"));
+				} catch (Exception e) {
+						System.out.println("Can't open wordlist");
+						System.exit(0);
+				}
+
+				while (sc.hasNext()){
+						words.add(sc.next());
+				}
+
+				board = new char[r][c];
+				for (int i = 0; i < board.length; i++) {
+						for (int j = 0; j < board[i].length; j++) {
+								board[i][j]='.';
+						}
 	}
 	
     }
     public WordSearch(){
-	this(30,30);
+				this(30,30);
     }
 
     public String toString(){
-	String s = "";
-
-	for (int i = 0; i < board.length; i++) {
-	    for (int j = 0; j < board[i].length; j++) {
-		s = s + board[i][j];
-	    }
-	    s = s + "\n";
-	}
-	return s;
+				String s = "";
+				
+				for (int i = 0; i < board.length; i++) {
+						for (int j = 0; j < board[i].length; j++) {
+								s = s + board[i][j];
+						}
+						s = s + "\n";
+				}
+				return s;
     }
 
 		
@@ -62,40 +82,86 @@ public class WordSearch{
 
     
     public boolean addWord(String w) {
-	int row = r.nextInt(board.length);
-	int col = r.nextInt(board[0].length);
-	int deltaRow = -1 + r.nextInt(3);
-	int deltaCol = -1 + r.nextInt(3);
-	if (deltaRow == deltaCol && deltaCol == 0)
-	    return false;
-	return addWordHelper(w,row,col,deltaRow,deltaCol);
+				int row = rnd.nextInt(board.length);
+				int col = rnd.nextInt(board[0].length);
+				int deltaRow = -1 + rnd.nextInt(3);
+				int deltaCol = -1 + rnd.nextInt(3);
+				if (deltaRow == deltaCol && deltaCol == 0)
+						return false;
+				return addWordHelper(w,row,col,deltaRow,deltaCol);
     }
-	
 
-    public static void main(String[] args) {
-	WordSearch w = new WordSearch(20,20);
-	System.out.println(w);
-	//w.addWord("hello",3,5,1,0);
-	//w.addWord("hello",10,10,-1,0);
-	//w.addWord("down",2,2,1,1);
-	//w.addWord("upply",15,15,-1,-1);
-	//w.addWord("diagoneway",25,13,-1,1);
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	
+		/**
+		 * copy a board with words in it to key which will be the answer key
+		 *
+		 */
+		private void makeKey(){
+				key = new char[board.length][board[0].length];
+				for (int i = 0; i < board.length; i++) {
+						for (int j = 0; j < board[0].length; j++) {
+								key[i][j] = board[i][j];
+						}
+				}
+		}
+		
+		public void buildPuzzle(int numwords){
 
-	
-	//w.addWordH("look",3,8,);
-	//w.addWordH("look",3,5);
-	//w.addWordH("hello",100,5);
-	//w.addWordH("hello",30,555);
+				/*
+					loop 
+					  take a random word out of the word list
+						try to add it to the puzzle
+
+				*/
+				wordsInPuzzle = new ArrayList<String>();
+				while (numwords > 0){
+								int wordIndex = rnd.nextInt(words.size());
+								String word = words.get(wordIndex);
+								if (addWord(word)) {
+										numwords--;
+										words.remove(wordIndex);
+										wordsInPuzzle.add(word);
+								}
+				}
+				makeKey();
+				/* fill the rest of the board */
+				for (int i = 0; i < board.length; i++) {
+						for (int j = 0; j < board[0].length; j++) {
+								if (board[i][j]=='.'){
+										/* method 2 */
+										String letters = "abcdefghijklmnopqrstuvwxyz";
+										char letter = letters.charAt(rnd.nextInt(letters.length()));
+										board[i][j]=letter;
+												
+										/* method 1
+										int offset = rnd.nextInt(26);
+										board[i][j]=(char)((int)'a'+offset);
+										*/
+								}
+						}
+				}
+		}
+
+				public String getWIP() {
+						return wordsInPuzzle.toString();
+				}
+
+		public String getKey() {
+				String s = "";
 				
-	System.out.println(w);
+				for (int i = 0; i < key.length; i++) {
+						for (int j = 0; j < key[i].length; j++) {
+								s = s + key[i][j];
+						}
+						s = s + "\n";
+				}
+				return s;
+		}
+    public static void main(String[] args) {
+				WordSearch w = new WordSearch(10,40);
+				System.out.println(w);
+				w.buildPuzzle(400);
+				System.out.println(w);
+				System.out.println(w.getWIP());
+				System.out.println(w.getKey());
     }
 }
