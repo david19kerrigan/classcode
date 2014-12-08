@@ -1,5 +1,5 @@
 /* superclass for warrior (base class) and Mage */
-public class Basechar {
+public abstract  class Basechar {
     private int health=20;
     private String name;
     public Basechar() {
@@ -13,9 +13,7 @@ public class Basechar {
 	return this.getName();
     }
     
-    public void attack(Basechar other){
-	System.out.println(this+" is attacking "+other);
-    }
+    public abstract void attack(Basechar other);
     
     public void setName(String name){
 	this.name = name;

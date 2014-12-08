@@ -7,6 +7,8 @@ public class Driver {
 	m.attack(w);
 	w.attack(m);
 
+	//Basechar b = new Basechar();
+	//b.attack(w);
 	
     }
 }
