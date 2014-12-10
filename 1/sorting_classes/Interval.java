@@ -1,10 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-class Interval {
+class Interval implements Comparable {
 
 		private int low,high;
-		private Random r = new Random();				
+		private static Random r = new Random();				
 		private static int numIntervals = 0;
 		
 		public Interval(int l, int h){
@@ -14,13 +14,28 @@ class Interval {
 		}
 		
 		public Interval() {
-				int l = r.nextInt(100);
-				int h = l + 1 + r.nextInt(100);
+				int h = r.nextInt(100);
+				int l = 1 + r.nextInt(h);
 				low = l;
 				high = h;
 				numIntervals = numIntervals + 1;
 		}
 
+
+		public int compareTo(Object other){
+				/* cast other to the appropriate type and store in a 
+					 local variable for convenience
+				*/
+				Interval o = (Interval)other;
+				/*
+				if (this.low == o.low){
+						return this.high - o.high;
+				} else {
+						return this.low - o.low;
+				}	
+				*/
+				return (this.high - this.low) - (o.high-o.low);
+		}
 		public String toString() {
 				//String s = "Inteval: "+numIntervals+": "+ "["+low+","+high+"]";
 				String s = "["+low+","+high+"]";
@@ -43,5 +58,23 @@ class Interval {
 						a[i] = new Interval();
 				}
 				System.out.println(Arrays.toString(a));
+
+				String[] sa = {"hello","frog","absolute","zoo","bagel"};
+				System.out.println(Arrays.toString(sa));
+				Arrays.sort(sa);
+				System.out.println(Arrays.toString(sa));
+
+				int[] ia = {5,3,5,9,10,2,3,1,100,50};
+				System.out.println(Arrays.toString(ia));
+				Arrays.sort(ia);
+				System.out.println(Arrays.toString(ia));
+
+
+				System.out.println(Arrays.toString(a));
+				Arrays.sort(a);
+				System.out.println(Arrays.toString(a));
+
+				
+				
 		}
 }
