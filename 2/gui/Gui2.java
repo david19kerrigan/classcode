@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event;
+import java.awt.event.*;
 
 public class Gui2 extends JFrame implements ActionListener {
 
