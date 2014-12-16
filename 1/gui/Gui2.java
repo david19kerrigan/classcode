@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 public class Gui2 extends JFrame implements ActionListener {
 
 		private Container pane;
@@ -9,7 +10,7 @@ public class Gui2 extends JFrame implements ActionListener {
 		private JTextArea text;
 		private JPanel canvas;
 
-		public void ActionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 
 		}
 		
