@@ -7,6 +7,19 @@ public class Maze
     private int maxX;
     private int maxY;
 
+		private char path='#';
+		private char wall=' ';
+		private char me='z';
+		private char exit='$';
+		private char visited = '.';
+		private boolean solved = false;
+		
+		public void delay(int n){
+				try {
+						Thread.sleep(n);
+				} catch (Exception e) {}
+		}
+		
     public Maze() 
     {
 				maxX=40;
@@ -45,11 +58,37 @@ public class Maze
 						}
 				return s;
     }
+
+		/*
+			solved - instance variable to indicate we're done
+			
+		 */
+		public void solve(int x, int y){
+				if (board[x][y]==wall ||
+						board[x][y]==me ||
+						board[x][y]==visited ||
+						solved){
+						return;
+				}
+
+				if (board[x][y]==exit){
+						System.out.println(this);
+						solved = true;
+				}
+				delay(100);
+				System.out.println(this);
+				board[x][y]=me;
+				solve(x+1,y);
+				solve(x-1,y);
+				solve(x,y+1);
+				solve(x,y-1);
+				board[x][y]=visited;
+		}
 		
 		public static void main(String[] args){
 				Maze m = new Maze();
 				System.out.println(m);
-				System.out.println(m);
+				m.solve(1,1);
 		}
 }
 
