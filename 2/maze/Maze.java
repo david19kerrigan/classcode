@@ -82,13 +82,17 @@ public class Maze
 				solve(x-1,y);
 				solve(x,y+1);
 				solve(x,y-1);
-				board[x][y]=visited;
+				if (!solved){
+						board[x][y]=visited;
+				}
 		}
 		
 		public static void main(String[] args){
 				Maze m = new Maze();
 				System.out.println(m);
 				m.solve(1,1);
+				System.out.println(m);
+		
 		}
 }
 
