@@ -85,9 +85,10 @@ class Sorts {
 				return s;
 		}
 		public static void main(String[] args) {
-				Sorts s = new Sorts();
-				System.out.println(s);
-				s.builtin();
-				System.out.println(s);
+				Sorts s = new Sorts(400000);
+				//System.out.println(s);
+				System.out.println("Starting");
+				s.isort();
+				System.out.println("Stopping");
 		}
 }
