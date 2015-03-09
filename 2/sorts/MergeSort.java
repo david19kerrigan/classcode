@@ -59,7 +59,7 @@ public class MergeSort {
 				ArrayList<Integer> b = new ArrayList<Integer>();
 				//ArrayList<Integer> c = new ArrayList<Integer>();
 				Random R = new Random();
-				for (int i=0; i<2000000; i++){
+				for (int i=0; i<4000000; i++){
 						b.add(R.nextInt(100));
 						//c.add(R.nextInt(10));
 				}
