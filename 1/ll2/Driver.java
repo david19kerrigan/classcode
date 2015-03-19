@@ -6,6 +6,10 @@ public class  Driver{
 				for (int i=0; i < 10; i++){
 						l.add(""+i);
 				}
-				System.out.println(l);
+				LLit i = l.getLLit();
+				while (i.hasNext()) {
+								String s=  i.next();
+								System.out.println(s);
+						}
 		}
 }

@@ -1,7 +1,20 @@
 public class LList{
-		private Node l=null;
+		private Node l;
+		
+		public LList(){
+				l = new Node();
+		}
 
-		public void add(String s){
+		public LLit getLLit(){
+				LLit i = new LLit(l.getNext());
+				return i;
+		}
+		
+		public Node getFirst(){
+				return l.getNext();
+		}
+		
+		public void add(int s){
 				Node tmp = new Node(s);
 				tmp.setNext(l);
 				l = tmp;
