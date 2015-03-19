@@ -1,30 +1,32 @@
-public class LList {
+public class LList{
 		private Node l;
-
+		
 		public LList(){
-				l = new Node("");
+				l = new Node();
 		}
-
 
 		public LLit getLLit(){
-				LLit llit = new LLit(l);
-				return llit;
+				LLit i = new LLit(l.getNext());
+				return i;
 		}
-
-		public void add(String s){
+		
+		public Node getFirst(){
+				return l.getNext();
+		}
+		
+		public void add(int s){
 				Node tmp = new Node(s);
-				tmp.setNext(l.getNext());
-				l.setNext(tmp);
+				tmp.setNext(l);
+				l = tmp;
 		}
-
+		
 		public String toString(){
 				String s = "";
-				Node tmp;
-				for (tmp = l; tmp != null; tmp=tmp.getNext()){
+				Node tmp;;
+				for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
 						s = s + tmp + " --> ";
 				}
 				s = s + "null";
 				return s;
 		}
-		
 }

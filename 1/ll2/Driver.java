@@ -1,15 +1,15 @@
-import java.util.*;
-public class  Driver{
+public class Driver{
 		public static void main(String[] args) {
-				Random r = new Random();
 				LList l = new LList();
-				for (int i=0; i < 10; i++){
-						l.add(""+i);
+				for (int i=0;i<5;i++){
+						l.add(i);
 				}
+
 				LLit i = l.getLLit();
-				while (i.hasNext()) {
-								String s=  i.next();
-								System.out.println(s);
-						}
+				while (i.hasNext()){
+						int number = i.next();
+						System.out.println(number);
+				}
+
 		}
 }
