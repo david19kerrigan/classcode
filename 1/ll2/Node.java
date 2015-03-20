@@ -1,19 +1,19 @@
-public class Node{
-		private int data;
+public class Node<E>{
+		private E data;
 		private Node next;
 
 		public Node(){
-				data = 0;
+				data = null;
 				next = null;
 		}
-		public Node(int s){
+		public Node(E s){
 				data = s;
 				next = null;
 		}
-		public void setData(int s){
+		public void setData(E s){
 				data = s;
 		}
-		public int getData(){
+		public E getData(){
 				return data;
 		}
 		public void setNext(Node n){
