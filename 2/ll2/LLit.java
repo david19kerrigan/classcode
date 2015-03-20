@@ -1,6 +1,6 @@
-public class LLit{
-		private Node t;
-		public LLit(Node n){
+public class LLit<E>{
+		private Node<E> t;
+		public LLit(Node<E> n){
 				t=n;
 		}
 
@@ -8,8 +8,8 @@ public class LLit{
 				return t!=null;
 		}
 
-		public int next(){
-				int retval = t.getData();
+		public E next(){
+				E retval = t.getData();
 				t=t.getNext();
 				return retval;
 		}
