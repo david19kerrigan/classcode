@@ -1,6 +1,6 @@
 public class Node<E>{
 		private E data;
-		private Node next;
+		private Node<E> next;
 
 		public Node(){
 				data = null;
@@ -16,10 +16,10 @@ public class Node<E>{
 		public E getData(){
 				return data;
 		}
-		public void setNext(Node n){
+		public void setNext(Node<E> n){
 				next = n;
 		}
-		public Node getNext(){
+		public Node<E> getNext(){
 				return next;
 		}
 		public String toString(){
